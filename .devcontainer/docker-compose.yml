@@ -1,0 +1,17 @@
+version: '3.9'
+
+services:
+  async-modal-ngx-dev:
+    image: async-modal-ngx-dev
+    container_name: async-modal-ngx-dev
+    build:
+      context: ../.
+      dockerfile: ./.devcontainer/Dockerfile
+    working_dir: /async-modal-ngx
+    ports:
+      - "4200:4200"
+      - "9229:9229"
+    volumes:
+      - ..:/async-modal-ngx:cached
+      - /var/run/docker.sock:/var/run/docker.sock
+    tty: true
