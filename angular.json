@@ -3,5 +3,38 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
+    "async-modal-ngx": {
+      "projectType": "library",
+      "root": "projects/async-modal-ngx",
+      "sourceRoot": "projects/async-modal-ngx/src",
+      "prefix": "lib",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:ng-packagr",
+          "options": {
+            "project": "projects/async-modal-ngx/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "tsConfig": "projects/async-modal-ngx/tsconfig.lib.prod.json"
+            },
+            "development": {
+              "tsConfig": "projects/async-modal-ngx/tsconfig.lib.json"
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "tsConfig": "projects/async-modal-ngx/tsconfig.spec.json",
+            "polyfills": [
+              "zone.js",
+              "zone.js/testing"
+            ]
+          }
+        }
+      }
+    }
   }
 }
