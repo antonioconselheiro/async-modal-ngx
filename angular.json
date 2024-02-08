@@ -7,7 +7,7 @@
       "projectType": "library",
       "root": "projects/async-modal-ngx",
       "sourceRoot": "projects/async-modal-ngx/src",
-      "prefix": "lib",
+      "prefix": "amo",
       "architect": {
         "build": {
           "builder": "@angular-devkit/build-angular:ng-packagr",
