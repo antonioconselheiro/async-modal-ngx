@@ -1,12 +1,8 @@
-import { Directive } from '@angular/core';
 import { Subject } from 'rxjs';
 
-@Directive()
-export abstract class ModalableDirective<EntryType, ReturnType> {
+export abstract class AbstractModalableDirective<EntryType, ReturnType> {
 
   abstract response: Subject<ReturnType | void>;
-
-  title?: string;
 
   onInjectData?(data: EntryType): void;
 

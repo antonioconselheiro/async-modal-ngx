@@ -1,7 +1,7 @@
 import { Directive, OnDestroy, OnInit, ViewContainerRef } from '@angular/core';
 import { Observable, Subscription } from 'rxjs';
 import { IModalMetadata } from './modal-metadata.interface';
-import { ModalableDirective } from './modalable.directive';
+import { AbstractModalableDirective } from './abstract-modalable.directive';
 
 @Directive()
 export abstract class ModalDirective implements OnInit, OnDestroy {
@@ -11,7 +11,7 @@ export abstract class ModalDirective implements OnInit, OnDestroy {
 
   isOpen = false;
   title?: string;
-  content: ModalableDirective<unknown, unknown> | null = null;
+  content: AbstractModalableDirective<unknown, unknown> | null = null;
   classes: string[] = [];
 
   private subscriptions = new Subscription();
