@@ -4,8 +4,7 @@ import { ModalDirective } from '../modal.directive';
 
 @Component({
   selector: 'amo-custom-modal',
-  templateUrl: './custom-modal.component.html',
-  styleUrls: ['./custom-modal.component.scss']
+  templateUrl: './custom-modal.component.html'
 })
 export class CustomModalComponent extends ModalDirective {
 

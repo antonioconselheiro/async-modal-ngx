@@ -1,4 +1,3 @@
-// eslint-disable-next-line max-len
 import { Directive, OnDestroy, OnInit, ViewContainerRef } from '@angular/core';
 import { Observable, Subscription } from 'rxjs';
 import { IModalMetadata } from './modal-metadata.interface';
@@ -63,18 +62,19 @@ export abstract class ModalDirective implements OnInit, OnDestroy {
     const container = this.container;
     if (!container) {
       console.error(
-        'Impossível criar modal: o atributo this.container está vazio, houve alguma ' +
-        'manutenção recente na parte de modais? #modalContainer mudou de nome?'
+        'Impossible to create modal: the this.container attribute ' +
+        'is empty, has there been any recent maintenance in the ' +
+        'modal part? #modalContainer changed its name?'
       );
       return;
     }
 
-    container.clear();  //  remove componentes antigos que não foram removidos corretamente
+    container.clear();  //  removes old components that were not removed correctly
     const content = this.content = container.createComponent(modalMetaData.component).instance;
     this.classes = modalMetaData.cssClasses;
 
     if (!content) {
-      console.error(`Não foi possível criar componente ${modalMetaData.component.name} dentro do container de modal.`);
+      console.error(`Could not create component ${modalMetaData.component.name} inside modal container.`);
       return;
     }
 
@@ -92,15 +92,17 @@ export abstract class ModalDirective implements OnInit, OnDestroy {
   closeModal(error?: unknown): void {
     const container = this.container;
     if (container) {
-      //  jogando processamento no próximo tick
-      // eslint-disable-next-line ban/ban
+      //  next ticking process
       setTimeout(() => {
         container.clear();
         this.close();
         this.content?.response.complete();
       });
     } else {
-      console.error('Impossível criar modal this.container, que contém o elemento da modal está vazio', error);
+      console.error(
+        'Impossible to create modal this.container, ' +
+        'which contains the modal element is empty', error
+      );
     }
   }
 

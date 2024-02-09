@@ -2,13 +2,11 @@
   "name": "belomonte",
   "version": "0.0.0",
   "scripts": {
-    "ng": "ng",
-    "start": "ng serve",
-    "build": "ng build",
-    "watch": "ng build --watch --configuration development",
+    "start": "npm run dev",
+    "dev": "ng serve --disable-host-check",
+    "build": "ng build async-modal-ngx",
     "test": "ng test"
   },
-  "private": true,
   "dependencies": {
     "@angular/animations": "^17.1.0",
     "@angular/common": "^17.1.0",
