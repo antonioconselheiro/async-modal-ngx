@@ -6,6 +6,5 @@ export interface IModalMetadata<EntryType, ReturnType> {
   component: Type<AbstractModalableDirective<EntryType, ReturnType>>;
   response: Subject<ReturnType>;
   cssClasses: string[];
-  title?: string;
   data: EntryType;
 }

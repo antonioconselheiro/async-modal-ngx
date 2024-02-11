@@ -79,7 +79,6 @@ export class ModalBuilder<EntryType, ReturnType> {
     ModalBuilder.modalInjectSubject.next({
       component, data,
       cssClasses: this.cssClasses,
-      title: this.title,
       response: response as Subject<unknown>
     });
 
