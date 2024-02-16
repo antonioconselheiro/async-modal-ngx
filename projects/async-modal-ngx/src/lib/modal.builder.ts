@@ -13,7 +13,6 @@ export class ModalBuilder<EntryType, ReturnType> {
   private injectData: EntryType | null = null;
   private cssClasses: string[] = [];
   private router?: Router;
-  private title?: string;
 
   private subscription = new Subscription();
 
@@ -23,11 +22,6 @@ export class ModalBuilder<EntryType, ReturnType> {
 
   setData(data: EntryType): ModalBuilder<EntryType, ReturnType> {
     this.injectData = data;
-    return this;
-  }
-
-  setTitle(title: string): ModalBuilder<EntryType, ReturnType> {
-    this.title = title;
     return this;
   }
 
