@@ -9,7 +9,7 @@ import { Subject } from 'rxjs';
  * the builder, this class will give you the means to respond
  * to the builder through a Subject.
  */
-export abstract class AbstractModalableDirective<EntryType, ReturnType> {
+export abstract class ModalableDirective<EntryType, ReturnType> {
 
   abstract response: Subject<ReturnType | void>;
 

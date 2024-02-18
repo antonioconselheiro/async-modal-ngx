@@ -2,7 +2,7 @@ import { Component, HostBinding, ViewChild, ViewContainerRef } from '@angular/co
 import { IModalMetadata } from '../modal-metadata.interface';
 import { Observable, Subscription } from 'rxjs';
 import { ModalBuilder } from '../modal.builder';
-import { AbstractModalableDirective } from '../abstract-modalable.directive';
+import { ModalableDirective } from '../modalable.directive';
 
 @Component({
   selector: 'modal-outlet',
@@ -14,7 +14,7 @@ export class ModalOutletComponent {
 
   classes: string[] = [];
   isOpen = false;
-  content: AbstractModalableDirective<unknown, unknown> | null = null;
+  content: ModalableDirective<unknown, unknown> | null = null;
 
   private subscriptions = new Subscription();
 

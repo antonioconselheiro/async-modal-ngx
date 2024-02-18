@@ -3,7 +3,7 @@ import { NavigationStart, Router } from '@angular/router';
 import { Observable, Subject, Subscription } from 'rxjs';
 import { filter, first } from 'rxjs/operators';
 import { IModalMetadata } from './modal-metadata.interface';
-import { AbstractModalableDirective } from './abstract-modalable.directive';
+import { ModalableDirective } from './modalable.directive';
 
 export class ModalBuilder<EntryType, ReturnType> {
 
@@ -17,7 +17,7 @@ export class ModalBuilder<EntryType, ReturnType> {
   private subscription = new Subscription();
 
   constructor(
-    private component: Type<AbstractModalableDirective<EntryType, ReturnType>>
+    private component: Type<ModalableDirective<EntryType, ReturnType>>
   ) { }
 
   setData(data: EntryType): ModalBuilder<EntryType, ReturnType> {
@@ -47,7 +47,7 @@ export class ModalBuilder<EntryType, ReturnType> {
   build(): Observable<ReturnType | void> {
     const response = new Subject<ReturnType>();
     const data = this.injectData as unknown;
-    const component = this.component as Type<AbstractModalableDirective<unknown, unknown>>;
+    const component = this.component as Type<ModalableDirective<unknown, unknown>>;
 
     if (this.router) {
       //  TODO: validate if query params are ignored or not
