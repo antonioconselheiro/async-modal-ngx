@@ -24,6 +24,12 @@ export class ModalOutletComponent {
   @HostBinding('style.display')
   display = 'none';
 
+  /**
+   * You can change this to 'block', 'flex'
+   * or other css display config
+   */
+  protected showingDisplay = 'flex';
+
   ngOnInit(): void {
     this.listenModalInjection();
   }
@@ -43,7 +49,7 @@ export class ModalOutletComponent {
 
   open(): void {
     this.isOpen = true;
-    this.display = 'flex';
+    this.display = this.showingDisplay;
   }
 
   close(): void {
