@@ -1,21 +1,28 @@
-import { Directive, OnDestroy, OnInit, ViewContainerRef } from '@angular/core';
-import { Subscription } from 'rxjs';
-import { AbstractModalableDirective } from './abstract-modalable.directive';
-import { IModalMetadata } from './modal-metadata.interface';
-import { ModalBuilder } from './modal.builder';
+import { Component, HostBinding, ViewChild, ViewContainerRef } from '@angular/core';
+import { IModalMetadata } from '../modal-metadata.interface';
+import { Observable, Subscription } from 'rxjs';
+import { ModalBuilder } from '../modal.builder';
+import { AbstractModalableDirective } from '../abstract-modalable.directive';
 
-@Directive()
-export abstract class ModalDirective implements OnInit, OnDestroy {
+@Component({
+  selector: 'modal-outlet',
+  templateUrl: './modal-outlet.component.html'
+})
+export class ModalOutletComponent {
 
-  readonly modalInject$ = ModalBuilder.modalInject$;
+  modalInject$: Observable<IModalMetadata<unknown, unknown>> = ModalBuilder.modalInject$;
 
+  classes: string[] = [];
   isOpen = false;
   content: AbstractModalableDirective<unknown, unknown> | null = null;
-  classes: string[] = [];
 
   private subscriptions = new Subscription();
 
-  abstract container: ViewContainerRef | null;
+  @ViewChild('modalContainer', { read: ViewContainerRef })
+  container: ViewContainerRef | null = null;
+
+  @HostBinding('style.display')
+  display = 'none';
 
   ngOnInit(): void {
     this.listenModalInjection();
@@ -25,8 +32,8 @@ export abstract class ModalDirective implements OnInit, OnDestroy {
     this.subscriptions.add(
       this.modalInject$.subscribe({
         next: modalMetaData => {
-          //  next tick like
-          setTimeout(() => {
+          //  next ticking
+          setTimeout(() =>{
             this.open();
             this.openModal(modalMetaData);
           })
@@ -36,10 +43,12 @@ export abstract class ModalDirective implements OnInit, OnDestroy {
 
   open(): void {
     this.isOpen = true;
+    this.display = 'flex';
   }
 
   close(): void {
     this.isOpen = false;
+    this.display = 'none'; 
   }
 
   getClasses(classes?: string[]): string {
@@ -51,14 +60,12 @@ export abstract class ModalDirective implements OnInit, OnDestroy {
     const container = this.container;
     if (!container) {
       console.error(
-        'Impossible to create modal: the this.container attribute ' +
-        'is empty, has there been any recent maintenance in the ' +
-        'modal part? #modalContainer changed its name?'
+        'Impossible to create modal: the this.container attribute is empty'
       );
       return;
     }
 
-    container.clear();  //  removes old components that were not removed correctly
+    container.clear();  //  remove componentes antigos que não foram removidos corretamente
     const content = this.content = container.createComponent(modalMetaData.component).instance;
     this.classes = modalMetaData.cssClasses;
 
@@ -81,17 +88,14 @@ export abstract class ModalDirective implements OnInit, OnDestroy {
   closeModal(error?: unknown): void {
     const container = this.container;
     if (container) {
-      //  next ticking process
+      //  next ticking it
       setTimeout(() => {
         container.clear();
         this.close();
         this.content?.response.complete();
       });
     } else {
-      console.error(
-        'Impossible to create modal this.container, ' +
-        'which contains the modal element is empty', error
-      );
+      console.error('Impossible to create modal: the this.container attribute is empty', error);
     }
   }
 
