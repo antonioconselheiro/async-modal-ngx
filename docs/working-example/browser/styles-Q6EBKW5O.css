@@ -1,0 +1,1 @@
+modal-outlet{display:flex;justify-content:center;align-items:center;background-color:#0000001a;border:1px solid;position:fixed;inset:0;z-index:500}modal-outlet>*{margin:0 auto;display:block;min-width:200px;background-color:#fff;border-radius:15px;padding:1rem;box-sizing:border-box}

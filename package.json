@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "scripts": {
     "start": "npm run dev",
-    "dev": "ng serve --host=0.0.0.0",
+    "dev": "ng serve working-example --host=0.0.0.0",
     "build": "ng build async-modal-ngx",
     "build:example": "ng build working-example",
     "test": "ng test"

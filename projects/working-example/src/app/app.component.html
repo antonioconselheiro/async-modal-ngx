@@ -1,6 +1,9 @@
 <modal-outlet></modal-outlet>
-<button click="open()">Open Modal</button>
+<div>
+  <button type="button" (click)="open()">Open Modal</button>
+</div>
 
-
-<span *ngIf="pressed === true">"ok" was pressed</span>
-<span *ngIf="pressed === false">"cancel" was pressed</span>
+<div>
+  <span *ngIf="pressed === true">"ok" was pressed</span>
+  <span *ngIf="pressed === false">"cancel" was pressed</span>
+</div>

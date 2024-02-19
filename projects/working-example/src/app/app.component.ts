@@ -25,6 +25,7 @@ export class AppComponent {
   ) { }
 
   open(): void {
+    console.info('clicked');
     this.modalService
       .createModal(MyModalComponent)
       //  the data send here will be received in onInjectData method
@@ -39,11 +40,15 @@ export class AppComponent {
       .build()
       .subscribe({
         next: response => {
-          this.pressed = response || null;
+          this.pressed = typeof response === 'boolean' ? response : null;
           console.info('data received: ', response);
         },
-        error: error => console.error(error),
-        complete: () => console.info('modal was closed')
+        error: error => {
+          console.error(error);
+        },
+        complete: () => {
+          console.info('modal was closed');
+        }
       });
   }
 }

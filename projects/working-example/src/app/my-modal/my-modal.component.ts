@@ -4,6 +4,7 @@ import { Subject } from 'rxjs';
 
 @Component({
   selector: 'app-my-modal',
+  standalone: true,
   templateUrl: './my-modal.component.html',
   styleUrl: './my-modal.component.scss'
 })
