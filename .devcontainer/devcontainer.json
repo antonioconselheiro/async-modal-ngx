@@ -13,7 +13,8 @@
         "dbaeumer.vscode-eslint",
         "eamodio.gitlens",
         "ms-azuretools.vscode-docker",
-        "wix.vscode-import-cost"
+        "wix.vscode-import-cost",
+        "jdinhlife.gruvbox"
       ]
     }
   }
