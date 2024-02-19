@@ -20,9 +20,7 @@ This library will not offer you style structures, an appearance for the componen
 To create a modal you must extends ModalableDirective as the example below:
 
 ```typescript
-import { Component } from '@angular/core';
 import { ModalableDirective } from '@belomonte/async-modal-ngx';
-import { Subject } from 'rxjs';
 
 @Component({
   selector: 'app-my-modal',
@@ -48,6 +46,56 @@ export class MyModalComponent extends ModalableDirective<{ name: string }, boole
   cancel(): void {
     this.response.next(false);
     this.close();
+  }
+}
+```
+
+And you can open your modal like this:
+
+```typescript
+import { AsyncModalModule, ModalService } from '@belomonte/async-modal-ngx';
+
+@Component({
+  selector: 'app-root',
+  standalone: true,
+  imports: [
+    CommonModule,
+    RouterOutlet,
+    AsyncModalModule
+  ],
+  templateUrl: './app.component.html',
+  styleUrl: './app.component.scss'
+})
+export class AppComponent {
+
+  pressed: boolean | null = null;
+
+  constructor(
+    private modalService: ModalService,
+    private router: Router
+  ) { }
+
+  open(): void {
+    this.modalService
+      .createModal(MyModalComponent)
+      //  the data send here will be received in onInjectData method
+      .setData({ name: 'user' })
+      //  optional, this will close modal when route changes
+      .setBindToRoute(this.router)
+      //  you can add css classes to modal root
+      .setRootCssClasses([
+        'my-custom-css-class-for-this-specific-instance',
+        'another-class'
+      ])
+      .build()
+      .subscribe({
+        next: response => {
+          this.pressed = response || null;
+          console.info('data received: ', response);
+        },
+        error: error => console.error(error),
+        complete: () => console.info('modal was closed')
+      });
   }
 }
 ```

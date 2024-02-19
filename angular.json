@@ -51,6 +51,7 @@
           "builder": "@angular-devkit/build-angular:application",
           "options": {
             "outputPath": "docs/working-example",
+            "baseHref": "/async-modal-ngx/working-example/browser/",
             "index": "projects/working-example/src/index.html",
             "browser": "projects/working-example/src/main.ts",
             "polyfills": [
