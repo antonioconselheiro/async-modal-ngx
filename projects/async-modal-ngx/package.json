@@ -1,6 +1,9 @@
 {
   "name": "@belomonte/async-modal-ngx",
   "version": "0.0.2",
+  "license": "Unlicense",
+  "author": "António Conselheiro",
+  "description": "angular customizable modal that allows to asynchronously wait for user action and receive return data",
   "peerDependencies": {
     "@angular/common": "^17.1.0",
     "@angular/core": "^17.1.0"
@@ -8,5 +11,13 @@
   "dependencies": {
     "tslib": "^2.3.0"
   },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/antonioconselheiro/async-modal-ngx.git"
+  },
+  "bugs": {
+    "url": "https://github.com/antonioconselheiro/async-modal-ngx/issues"
+  },
+  "homepage": "https://github.com/antonioconselheiro/async-modal-ngx#readme",
   "sideEffects": false
 }

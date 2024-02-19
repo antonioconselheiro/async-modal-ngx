@@ -4,6 +4,11 @@
 
 # Asynchronous Modal for Angular (AsyncModalNgx)
 
+[![npm version](https://badge.fury.io/js/@belomonte%2Fasync-modal-ngx.svg)](https://github.com/antonioconselheiro/async-modal-ngx)
+[![Npm Total Downloads](https://img.shields.io/npm/dt/@belomonte/async-modal-ngx.svg)](https://github.com/antonioconselheiro/async-modal-ngx)
+[![Npm Monthly Downloads](https://img.shields.io/npm/dm/@belomonte/async-modal-ngx.svg)](https://github.com/antonioconselheiro/async-modal-ngx)
+
+
 This library will give you the means to present an angular component on the screen with the possibility of sending data to it before rendering and will also provide an observable to receive data from this component and know when the interaction with it has been completed.
 
 This library will not offer you style structures, an appearance for the component that will host your modals must be customized in your project.
