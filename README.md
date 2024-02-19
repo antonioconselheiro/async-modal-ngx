@@ -4,4 +4,4 @@
 
 # Belomonte Workspace
 
-Workspace of Async Modal for Angular (AsyncModalNgx). The library README.md is inside the package folder.
+Workspace of Async Modal for Angular (AsyncModalNgx). [The library README.md is inside the package folder](./projects/async-modal-ngx/README.md).
