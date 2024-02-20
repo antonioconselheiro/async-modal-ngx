@@ -1,4 +1,4 @@
-import { Component, HostBinding, ViewChild, ViewContainerRef } from '@angular/core';
+import { Component, EventEmitter, HostBinding, Input, Output, ViewChild, ViewContainerRef } from '@angular/core';
 import { IModalMetadata } from '../modal-metadata.interface';
 import { Observable, Subscription } from 'rxjs';
 import { ModalBuilder } from '../modal.builder';
@@ -27,8 +27,23 @@ export class ModalOutletComponent {
   /**
    * You can change this to 'block', 'flex'
    * or other css display config
+   * 
+   * @default 'block'
    */
-  protected showingDisplay = 'flex';
+  @Input()
+  showingDisplay: 'block' | 'flex' | string = 'block';
+
+  /**
+   * Emits when modal is open
+   */
+  @Output()
+  opened = new EventEmitter<void>();
+
+  /**
+   * Emits when modal is closed
+   */
+  @Output()
+  closed = new EventEmitter<void>();
 
   ngOnInit(): void {
     this.listenModalInjection();
@@ -50,11 +65,13 @@ export class ModalOutletComponent {
   open(): void {
     this.isOpen = true;
     this.display = this.showingDisplay;
+    this.opened.emit();
   }
 
   close(): void {
     this.isOpen = false;
     this.display = 'none'; 
+    this.closed.emit();
   }
 
   getClasses(classes?: string[]): string {

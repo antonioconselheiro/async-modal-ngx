@@ -119,6 +119,70 @@ export class AppComponent {
 }
 ```
 
+## Customize a main modal wrapping ModalOutletComponent
+Instead put the <modal-outlet> directly in app.component, you can create a component to work as your main modal and embed each modal component inside it, as the example below:
+
+```typescript
+import { Component, HostListener, OnDestroy, OnInit, ViewChild } from '@angular/core';
+import { ModalBuilder, ModalOutletComponent } from '@belomonte/async-modal-ngx';
+import { Subscription } from 'rxjs';
+
+@Component({
+  selector: 'app-main-modal',
+  templateUrl: './main-modal.component.html',
+  styleUrls: ['./main-modal.component.scss']
+})
+export class MainModalComponent implements OnInit, OnDestroy {
+  
+  @ViewChild(ModalOutletComponent)
+  modal!: ModalOutletComponent;
+
+  private subscriptions = new Subscription();
+  
+  title = '';
+
+  ngOnInit(): void {
+    this.subscribeModalData();
+  }
+
+  ngOnDestroy(): void {
+    this.subscriptions.unsubscribe();
+  }
+  
+  private subscribeModalData(): void {
+    this.subscriptions.add(ModalBuilder.modalInject$.subscribe({
+      next: metadata => {
+        //  casting from unknown
+        const data = Object(metadata.data);
+        if ('title' in data) {
+          this.title = data.title;
+        }
+      }
+    }));
+  }
+
+  @HostListener('document:keydown.escape')
+  close(): void {
+    this.modal.close();
+  }
+}
+```
+
+```html
+<section [class.hidden]="!isOpen" class="modal">
+  <header>
+    <button tabindex="1" (click)="close()" type="button">
+      x
+    </button>
+    <h1>{{title}}</h1>
+  </header>
+  <div>
+    <modal-outlet></modal-outlet>
+  </div>
+</section>
+
+```
+
 ## Donate
 Help me continue working on tools like this one.
 There's still a lot of work to do.
