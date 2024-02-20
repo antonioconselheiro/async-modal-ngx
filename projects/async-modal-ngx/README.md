@@ -22,6 +22,20 @@ This library will not offer you style structures, an appearance for the componen
 
 ## How to use
 
+You must import AsyncModalModule where you gonna render <modal-outlet>. You can put it in `AppModule` or you can create a module for a complex and customized modal. 
+
+```typescript
+import { AsyncModalModule } from '@belomonte/async-modal-ngx';
+
+@NgModule({
+  imports: [
+    CommonModule,
+    AsyncModalModule
+  ]
+})
+export class AppModule { }
+```
+
 To create a modal you must extends ModalableDirective as the example below:
 
 ```typescript
