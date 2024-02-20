@@ -151,7 +151,7 @@ export class MainModalComponent implements OnInit, OnDestroy {
   }
   
   private subscribeModalData(): void {
-    this.subscriptions.add(this.modal.modalInject$.subscribe({
+    this.subscriptions.add(ModalBuilder.modalInject$.subscribe({
       next: metadata => {
         //  casting from unknown
         const data = Object(metadata.data);
