@@ -8,7 +8,7 @@ import { ModalableDirective } from './modalable.directive';
 export class ModalBuilder<EntryType, ReturnType> {
 
   private static modalInjectSubject = new Subject<IModalMetadata<unknown, unknown>>();
-  static modalInject$ = ModalBuilder.modalInjectSubject;
+  static modalInject$ = ModalBuilder.modalInjectSubject.asObservable();
 
   private injectData: EntryType | null = null;
   private cssClasses: string[] = [];
