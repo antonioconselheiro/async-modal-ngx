@@ -137,9 +137,10 @@ export class MainModalComponent implements OnInit, OnDestroy {
   @ViewChild(ModalOutletComponent)
   modal!: ModalOutletComponent;
 
-  private subscriptions = new Subscription();
-  
   title = '';
+  isOpen = false;
+
+  private subscriptions = new Subscription();
 
   ngOnInit(): void {
     this.subscribeModalData();
@@ -150,7 +151,7 @@ export class MainModalComponent implements OnInit, OnDestroy {
   }
   
   private subscribeModalData(): void {
-    this.subscriptions.add(ModalBuilder.modalInject$.subscribe({
+    this.subscriptions.add(this.modal.modalInject$.subscribe({
       next: metadata => {
         //  casting from unknown
         const data = Object(metadata.data);
@@ -177,7 +178,11 @@ export class MainModalComponent implements OnInit, OnDestroy {
     <h1>{{title}}</h1>
   </header>
   <div>
-    <modal-outlet></modal-outlet>
+    <modal-outlet
+      (closed)="isOpen = false"
+      (opened)="isOpen = true"
+      [showingDisplay]="flex"
+    ></modal-outlet>
   </div>
 </section>
 
