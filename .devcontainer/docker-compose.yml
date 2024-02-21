@@ -9,8 +9,7 @@ services:
       dockerfile: ./.devcontainer/Dockerfile
     working_dir: /async-modal-ngx
     ports:
-      - "4200:4200"
-      - "9229:9229"
+      - "4202:4200"
     volumes:
       - ..:/async-modal-ngx:cached
       - /var/run/docker.sock:/var/run/docker.sock

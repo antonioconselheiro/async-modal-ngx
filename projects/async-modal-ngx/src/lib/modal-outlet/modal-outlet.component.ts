@@ -1,4 +1,4 @@
-import { Component, EventEmitter, HostBinding, Input, Output, ViewChild, ViewContainerRef } from '@angular/core';
+import { Component, EventEmitter, HostBinding, Input, NgZone, Output, ViewChild, ViewContainerRef } from '@angular/core';
 import { IModalMetadata } from '../modal-metadata.interface';
 import { Observable, Subscription } from 'rxjs';
 import { ModalBuilder } from '../modal.builder';
@@ -45,6 +45,10 @@ export class ModalOutletComponent {
   @Output()
   closed = new EventEmitter<void>();
 
+  constructor(
+    private ngZone: NgZone
+  ) { }
+
   ngOnInit(): void {
     this.listenModalInjection();
   }
@@ -63,15 +67,19 @@ export class ModalOutletComponent {
   }
 
   open(): void {
-    this.isOpen = true;
-    this.display = this.showingDisplay;
-    this.opened.emit();
+    this.ngZone.run(() => {
+      this.isOpen = true;
+      this.display = this.showingDisplay;
+      this.opened.emit();
+    });
   }
 
   close(): void {
-    this.isOpen = false;
-    this.display = 'none'; 
-    this.closed.emit();
+    this.ngZone.run(() => {
+      this.isOpen = false;
+      this.display = 'none'; 
+      this.closed.emit();
+    });
   }
 
   getClasses(classes?: string[]): string {
