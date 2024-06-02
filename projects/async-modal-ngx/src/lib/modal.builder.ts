@@ -12,6 +12,7 @@ export class ModalBuilder<EntryType, ReturnType> {
 
   private injectData: EntryType | null = null;
   private cssClasses: string[] = [];
+  private outletName = 'default';
   private router?: Router;
 
   private subscription = new Subscription();
@@ -38,6 +39,11 @@ export class ModalBuilder<EntryType, ReturnType> {
     return this;
   }
 
+  setOutletName(outletName: string): ModalBuilder<EntryType, ReturnType> {
+    this.outletName = outletName;
+    return this;
+  }
+
   /**
    * The void type must always be considered as a return, this must occur
    * because when the observable is converted to a promise it will merge
@@ -48,6 +54,7 @@ export class ModalBuilder<EntryType, ReturnType> {
     const response = new Subject<ReturnType>();
     const data = this.injectData as unknown;
     const component = this.component as Type<ModalableDirective<unknown, unknown>>;
+    const outletName = this.outletName;
 
     if (this.router) {
       //  TODO: validate if query params are ignored or not
@@ -71,7 +78,7 @@ export class ModalBuilder<EntryType, ReturnType> {
     }
 
     ModalBuilder.modalInjectSubject.next({
-      component, data,
+      component, data, outletName,
       cssClasses: this.cssClasses,
       response: response as Subject<unknown>
     });

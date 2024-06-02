@@ -33,6 +33,9 @@ export class ModalOutletComponent {
   @Input()
   showingDisplay: 'block' | 'flex' | string = 'block';
 
+  @Input()
+  name = 'default';
+
   /**
    * Emits when modal is open
    */
@@ -56,14 +59,18 @@ export class ModalOutletComponent {
   private listenModalInjection(): void {
     this.subscriptions.add(
       this.modalInject$.subscribe({
-        next: modalMetaData => {
-          //  next ticking
-          setTimeout(() =>{
-            this.open();
-            this.openModal(modalMetaData);
-          })
-        }
+        next: modalMetaData => this.renderModal(modalMetaData)
       }));
+  }
+
+  private renderModal(modalMetaData: IModalMetadata<unknown, unknown>) {
+    if (modalMetaData.outletName === this.name) {
+      //  next ticking
+      setTimeout(() =>{
+        this.open();
+        this.openModal(modalMetaData);
+      });
+    }
   }
 
   open(): void {

@@ -179,13 +179,22 @@ export class MainModalComponent implements OnInit, OnDestroy {
   </header>
   <div>
     <modal-outlet
+      name="headedModal"
       (closed)="isOpen = false"
       (opened)="isOpen = true"
-      [showingDisplay]="flex"
+      showingDisplay="flex"
     ></modal-outlet>
   </div>
 </section>
 
+```
+
+And then you can call it like this:
+```typescript
+  this.modalService
+    .createModal(MainModalComponent)
+    .setOutletName('headedModal')
+    .build();
 ```
 
 ## Donate

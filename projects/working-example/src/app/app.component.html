@@ -1,6 +1,15 @@
-<modal-outlet></modal-outlet>
+<div class="modalOutletContainer">
+  <modal-outlet name="one"></modal-outlet>
+  
+  <modal-outlet name="two"></modal-outlet>
+</div>
+
 <div>
-  <button type="button" (click)="open()">Open Modal</button>
+  <button type="button" (click)="open()">Open Modal in Outlet One</button>
+</div>
+
+<div>
+  <button type="button" (click)="open()">Open Modal in Outlet Two</button>
 </div>
 
 <div>
