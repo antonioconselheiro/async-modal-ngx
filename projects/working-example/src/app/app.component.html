@@ -1,15 +1,13 @@
-<div class="modalOutletContainer">
-  <modal-outlet name="one"></modal-outlet>
-  
-  <modal-outlet name="two"></modal-outlet>
+<modal-outlet showingDisplay="flex" name="one"></modal-outlet>
+
+<modal-outlet name="two"></modal-outlet>
+
+<div>
+  <button type="button" (click)="open('one')">Open Modal in Outlet One</button>
 </div>
 
 <div>
-  <button type="button" (click)="open()">Open Modal in Outlet One</button>
-</div>
-
-<div>
-  <button type="button" (click)="open()">Open Modal in Outlet Two</button>
+  <button type="button" (click)="open('two')">Open Modal in Outlet Two</button>
 </div>
 
 <div>

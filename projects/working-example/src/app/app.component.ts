@@ -24,14 +24,15 @@ export class AppComponent {
     private router: Router
   ) { }
 
-  open(): void {
-    console.info('clicked');
+  open(outletName: string): void {
     this.modalService
       .createModal(MyModalComponent)
       //  the data send here will be received in onInjectData method
       .setData({ name: 'user' })
       //  optional, this will close modal when route changes
       .setBindToRoute(this.router)
+      //  choose the modal outlet name, default is 'default'
+      .setOutletName(outletName)
       //  you can add css classes to modal root
       .setRootCssClasses([
         'my-custom-css-class-for-this-specific-instance',
