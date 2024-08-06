@@ -1,12 +1,12 @@
 {
   "name": "@belomonte/async-modal-ngx",
-  "version": "0.1.0",
+  "version": "1.0.0",
   "license": "Unlicense",
   "author": "António Conselheiro",
   "description": "angular customizable modal that allows to asynchronously wait for user action and receive return data",
   "peerDependencies": {
-    "@angular/common": "^17.1.0",
-    "@angular/core": "^17.1.0"
+    "@angular/common": "^18.1.3",
+    "@angular/core": "^18.1.3"
   },
   "dependencies": {
     "tslib": "^2.3.0"
