@@ -1,6 +1,6 @@
 {
   "name": "@belomonte/async-modal-ngx",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "license": "Unlicense",
   "author": "António Conselheiro",
   "description": "angular customizable modal that allows to asynchronously wait for user action and receive return data",
