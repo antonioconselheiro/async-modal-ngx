@@ -6,7 +6,7 @@
     "start": "npm run dev",
     "dev": "ng serve working-example --host=0.0.0.0",
     "build": "ng build async-modal-ngx",
-    "build:example": "ng build working-example",
+    "docs": "ng build working-example",
     "test": "ng test"
   },
   "dependencies": {

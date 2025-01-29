@@ -69,7 +69,7 @@ export class MyModalComponent extends ModalableDirective<{ name: string }, boole
 }
 ```
 
-And you can open your modal like this:
+After you set <modal-outlet> in your template to render the modal, you can open it like this:
 
 ```typescript
 import { AsyncModalModule, ModalService } from '@belomonte/async-modal-ngx';
@@ -119,7 +119,41 @@ export class AppComponent {
 }
 ```
 
-You must include the <modal-outlet> element to render modal.
+Also you can open with a small set of configurations:
+```typescript
+import { AsyncModalModule, ModalService } from '@belomonte/async-modal-ngx';
+
+@Component({
+  selector: 'app-root',
+  standalone: true,
+  imports: [
+    CommonModule,
+    AsyncModalModule
+  ],
+  templateUrl: './app.component.html',
+  styleUrl: './app.component.scss'
+})
+export class AppComponent {
+
+  pressed: boolean | null = null;
+
+  constructor(
+    private modalService: ModalService
+  ) { }
+
+  open(): void {
+    this.modalService
+      .createModal(MyModalComponent)
+      .build()
+      .subscribe({
+        next: response => {
+          this.pressed = response || null;
+          console.info('data received: ', response);
+        }
+      });
+  }
+}
+```
 
 ## Customize a main modal wrapping ModalOutletComponent
 Instead put the <modal-outlet> directly in app.component, you can create a component to work as your main modal and embed each modal component inside it, as the example below:
@@ -197,6 +231,36 @@ And then you can call it like this:
     .createModal(MainModalComponent)
     .setOutletName('headedModal')
     .build();
+```
+
+## CSS Suggestion
+You can full customize your modal style, but this is a suggestion from [working example app](https://antonioconselheiro.github.io/async-modal-ngx/working-example/browser/): 
+
+```scss
+modal-outlet {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(0,0,0,.1);
+  border: 1px solid;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 500;
+
+  > * {
+    margin: 0 auto;
+    display: block;
+    min-width: 200px;
+    background-color: white;
+    border-radius: 15px;
+    padding: 1rem;
+    box-sizing: border-box;
+  }
+}
+
 ```
 
 ## Donate

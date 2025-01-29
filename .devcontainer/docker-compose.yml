@@ -1,5 +1,3 @@
-version: '3.9'
-
 services:
   async-modal-ngx-dev:
     image: async-modal-ngx-dev

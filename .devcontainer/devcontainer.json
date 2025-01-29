@@ -1,5 +1,5 @@
 {
-  "name": "Existing Docker Compose (Extend)",
+  "name": "Async Modal Dev",
   "dockerComposeFile": [
     "docker-compose.yml"
   ],

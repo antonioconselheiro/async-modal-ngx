@@ -77,10 +77,13 @@ export class ModalBuilder<EntryType, ReturnType> {
       );
     }
 
-    ModalBuilder.modalInjectSubject.next({
-      component, data, outletName,
-      cssClasses: this.cssClasses,
-      response: response as Subject<unknown>
+    //  this tick help avoid emits subject before it's subcribe by the user code
+    setTimeout(() => {
+      ModalBuilder.modalInjectSubject.next({
+        component, data, outletName,
+        cssClasses: this.cssClasses,
+        response: response as Subject<unknown>
+      });
     });
 
     return response.asObservable();

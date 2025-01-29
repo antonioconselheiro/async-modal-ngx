@@ -1,11 +1,7 @@
-FROM node:20
+FROM node:22
 
 RUN npm install eslint typescript @angular/cli -g
-
 WORKDIR /async-modal-ngx
-
-COPY ./.gitconfig /root/.gitconfig
-COPY ./.ssh /root/.ssh
 
 ENV LANG C.UTF-8
 ENV TZ America/Sao_Paulo
