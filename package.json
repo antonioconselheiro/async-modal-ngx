@@ -9,6 +9,16 @@
     "docs": "ng build working-example",
     "test": "ng test"
   },
+  "keywords": [
+    "angular",
+    "typescript",
+    "component",
+    "async",
+    "asynchronous",
+    "modal",
+    "dialog",
+    "ngx"
+  ],
   "dependencies": {
     "@angular/animations": "^18.1.3",
     "@angular/common": "^18.1.3",
