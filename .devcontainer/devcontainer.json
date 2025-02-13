@@ -5,6 +5,7 @@
   ],
   "service": "async-modal-ngx-dev",
   "workspaceFolder": "/async-modal-ngx",
+  "postCreateCommand": "./.devcontainer/auth.sh",
   "customizations": {
     "vscode": {
       "extensions": [
