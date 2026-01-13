@@ -1,4 +1,4 @@
-import { CommonModule } from '@angular/common';
+
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { AsyncModalModule, ModalService } from '@belomonte/async-modal-ngx';
@@ -7,9 +7,8 @@ import { MyModalComponent } from './my-modal/my-modal.component';
 @Component({
   selector: 'app-root',
   imports: [
-    CommonModule,
     AsyncModalModule
-  ],
+],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss'
 })

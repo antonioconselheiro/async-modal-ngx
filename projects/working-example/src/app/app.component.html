@@ -11,6 +11,10 @@
 </div>
 
 <div>
-  <span *ngIf="pressed === true">"ok" was pressed</span>
-  <span *ngIf="pressed === false">"cancel" was pressed</span>
+  @if (pressed === true) {
+    <span>"ok" was pressed</span>
+  }
+  @if (pressed === false) {
+    <span>"cancel" was pressed</span>
+  }
 </div>

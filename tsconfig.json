@@ -13,7 +13,7 @@
     "sourceMap": true,
     "declaration": true,
     "experimentalDecorators": true,
-    "moduleResolution": "node",
+    "moduleResolution": "bundler",
     "importHelpers": true,
     "target": "ES2022",
     "module": "ES2022",
@@ -23,7 +23,9 @@
       "dom"
     ],
     "paths": {
-      "@belomonte/async-modal-ngx": ["./projects/async-modal-ngx/src/index.ts"]
+      "@belomonte/async-modal-ngx": [
+        "./projects/async-modal-ngx/src/index.ts"
+      ]
     }
   },
   "angularCompilerOptions": {
