@@ -1,6 +1,7 @@
 FROM node:22
 
 RUN npm install eslint typescript @angular/cli -g
+RUN npm config set legacy-peer-deps true
 WORKDIR /async-modal-ngx
 
 # Keyboard & Timezone

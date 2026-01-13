@@ -5,8 +5,9 @@ import { ModalBuilder } from '../modal.builder';
 import { ModalableDirective } from '../modalable.directive';
 
 @Component({
-  selector: 'modal-outlet',
-  templateUrl: './modal-outlet.component.html'
+    selector: 'modal-outlet',
+    templateUrl: './modal-outlet.component.html',
+    standalone: false
 })
 export class ModalOutletComponent {
 
