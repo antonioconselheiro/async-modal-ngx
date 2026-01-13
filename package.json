@@ -6,7 +6,7 @@
     "start": "npm run dev",
     "dev": "ng serve working-example --host=0.0.0.0",
     "build": "ng build async-modal-ngx",
-    "docs": "rm -rf docs; ng build working-example; mv docs/working-example/browser/** docs/working-example/; rm -rf docs/working-example/browser",
+    "docs": "ng build working-example",
     "test": "ng test"
   },
   "keywords": [
