@@ -23,7 +23,7 @@
       "dom"
     ],
     "paths": {
-      "@belomonte/async-modal-ngx/*": ["./projects/async-modal-ngx/src"]
+      "@belomonte/async-modal-ngx": ["./projects/async-modal-ngx/src/index.ts"]
     }
   },
   "angularCompilerOptions": {
